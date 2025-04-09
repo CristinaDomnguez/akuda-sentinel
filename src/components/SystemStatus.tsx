@@ -33,8 +33,13 @@ export default function SystemStatus({ status }: Props) {
       icon={data.icon}
       label={data.label}
       color={data.color as "success" | "warning" | "error"}
-      variant="outlined"
-      sx={{ fontWeight: "bold", ml: 2 }}
+      variant="filled"
+      sx={{
+        fontWeight: "bold",
+        fontSize: "1rem",
+        height: 40,
+        padding: "0 8px",
+      }}
     />
   );
 }

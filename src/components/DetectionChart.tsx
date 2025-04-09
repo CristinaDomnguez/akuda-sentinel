@@ -1,28 +1,75 @@
-import { ResponsiveBar } from '@nivo/bar';
+import { Typography, Paper, Box, useTheme } from "@mui/material";
+import { ResponsiveBar } from "@nivo/bar";
+import { Theme } from "@nivo/core";
 
 const data = [
-  { tipo: 'Web', valor: 57.6 },
-  { tipo: 'Malware', valor: 20.3 },
-  { tipo: 'Exploits', valor: 1.3 },
-  { tipo: 'Ransomware', valor: 0.0077 },
+  { tipo: "Web", valor: 57.6 },
+  { tipo: "Malware", valor: 20.3 },
+  { tipo: "Exploits", valor: 2.3 },
+  { tipo: "Ransomware", valor: 1.2 },
 ];
 
-/**
- * Gráfico de barras que muestra detecciones globales simuladas.
- */
-const DetectionChart = () => (
-  <div style={{ height: 300 }}>
-    <ResponsiveBar
-      data={data}
-      keys={['valor']}
-      indexBy="tipo"
-      margin={{ top: 20, right: 20, bottom: 50, left: 60 }}
-      padding={0.3}
-      colors={{ scheme: 'set2' }}
-      axisBottom={{ tickRotation: -45 }}
-      labelSkipWidth={12}
-    />
-  </div>
-);
+const DetectionChart = () => {
+  const theme = useTheme();
+
+  const nivoTheme = {
+    textColor: theme.palette.text.primary,
+    axis: {
+      ticks: {
+        text: {
+          fill: theme.palette.text.primary,
+        },
+      },
+    },
+    grid: {
+      line: {
+        stroke: theme.palette.divider,
+      },
+    },
+  } as Theme;
+
+  return (
+    <Paper
+      elevation={2}
+      sx={{
+        p: 3,
+        backgroundColor: theme.palette.background.paper,
+        borderRadius: 2,
+      }}
+    >
+      <Typography
+        variant="h6"
+        fontWeight={700}
+        sx={{ color: "text.primary", mb: 2 }}
+      >
+        Detecciones globales (últimos 30 días)
+      </Typography>
+
+      <Box sx={{ height: 400 }}>
+        <ResponsiveBar
+          data={data}
+          keys={["valor"]}
+          indexBy="tipo"
+          margin={{ top: 20, right: 30, bottom: 60, left: 60 }}
+          padding={0.4}
+          layout="vertical"
+          axisBottom={{
+            tickRotation: 0,
+            tickPadding: 8,
+          }}
+          axisLeft={{
+            tickValues: 5,
+            legend: "Cantidad",
+            legendPosition: "middle",
+            legendOffset: -40,
+          }}
+          labelSkipHeight={12}
+          enableLabel={false}
+          theme={nivoTheme}
+        />
+      </Box>
+    </Paper>
+  );
+};
 
 export default DetectionChart;

@@ -1,5 +1,5 @@
-import { Box, Button, Stack, Typography, Snackbar } from '@mui/material';
-import { useState } from 'react';
+import { Box, Button, Stack, Typography, Snackbar } from "@mui/material";
+import { useState } from "react";
 
 /**
  * Componente con botones de acciones rápidas del antivirus.
@@ -16,15 +16,24 @@ export default function QuickActions() {
 
   return (
     <Box mt={4}>
-      <Typography variant="h6" gutterBottom>
+      <Typography
+        variant="h6"
+        fontWeight={700}
+        sx={{ color: "text.primary", mb: 1 }}
+      >
         Acciones rápidas
       </Typography>
 
-      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+      <Stack
+        direction={{ xs: "column", sm: "row" }}
+        spacing={2}
+        justifyContent="center"
+        alignItems="center"
+      >
         <Button
           variant="contained"
           color="primary"
-          onClick={() => handleAction('Escaneo profundo')}
+          onClick={() => handleAction("Escaneo profundo")}
         >
           Escaneo profundo
         </Button>
@@ -32,7 +41,7 @@ export default function QuickActions() {
         <Button
           variant="contained"
           color="secondary"
-          onClick={() => handleAction('Actualizar base de datos')}
+          onClick={() => handleAction("Actualizar base de datos")}
         >
           Actualizar base
         </Button>
@@ -40,7 +49,7 @@ export default function QuickActions() {
         <Button
           variant="contained"
           color="warning"
-          onClick={() => handleAction('Limpiar archivos sospechosos')}
+          onClick={() => handleAction("Limpiar archivos sospechosos")}
         >
           Limpiar sospechosos
         </Button>
@@ -50,7 +59,7 @@ export default function QuickActions() {
         open={!!snackbarMessage}
         message={snackbarMessage}
         autoHideDuration={3000}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       />
     </Box>
   );
