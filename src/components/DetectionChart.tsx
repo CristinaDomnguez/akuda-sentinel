@@ -1,26 +1,28 @@
-import { PieChart } from '@mui/x-charts';
-import { Box, Typography } from '@mui/material';
+import { ResponsiveBar } from '@nivo/bar';
 
-const DetectionChart = () => {
-  const data = [
-    { id: 0, value: 57.6, label: 'Web Protection' },
-    { id: 1, value: 20.3, label: 'Malware / PUP' },
-    { id: 2, value: 1.3, label: 'Exploits' },
-    { id: 3, value: 0.0077, label: 'Ransomware' }
-  ];
+const data = [
+  { tipo: 'Web', valor: 57.6 },
+  { tipo: 'Malware', valor: 20.3 },
+  { tipo: 'Exploits', valor: 1.3 },
+  { tipo: 'Ransomware', valor: 0.0077 },
+];
 
-  return (
-    <Box p={4}>
-      <Typography variant="h5" gutterBottom>
-        Detecciones globales (últimos 30 días)
-      </Typography>
-      <PieChart
-        series={[{ data, innerRadius: 50 }]}
-        width={400}
-        height={250}
-      />
-    </Box>
-  );
-};
+/**
+ * Gráfico de barras que muestra detecciones globales simuladas.
+ */
+const DetectionChart = () => (
+  <div style={{ height: 300 }}>
+    <ResponsiveBar
+      data={data}
+      keys={['valor']}
+      indexBy="tipo"
+      margin={{ top: 20, right: 20, bottom: 50, left: 60 }}
+      padding={0.3}
+      colors={{ scheme: 'set2' }}
+      axisBottom={{ tickRotation: -45 }}
+      labelSkipWidth={12}
+    />
+  </div>
+);
 
 export default DetectionChart;

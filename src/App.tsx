@@ -1,16 +1,10 @@
-import "./App.css";
-import { Container } from '@mui/material';
-import SecurityOverview from './components/SecurityOverview';
-import DetectionChart from './components/DetectionChart';
+import Dashboard from './pages/Dashboard';
 
+/**
+ * Punto de entrada principal de la aplicación.
+ */
 function App() {
-  return (
-    <Container maxWidth="lg">
-      <SecurityOverview />
-      <DetectionChart />
-    </Container>
-  );
+  return <Dashboard />;
 }
 
 export default App;
-
