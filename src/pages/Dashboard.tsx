@@ -17,7 +17,7 @@ const Dashboard = () => {
     <>
       <Header />
 
-      <Container maxWidth="xl" sx={{ mt: 6, mb: 6 }}>
+      <Container maxWidth="xl" sx={{ pt: 6, pb: 6 }}>
         <Box
           display="flex"
           justifyContent="space-between"

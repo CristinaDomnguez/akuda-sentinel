@@ -59,6 +59,7 @@ const columns: GridColDef[] = [
     field: "status",
     headerName: "Estado",
     flex: 1,
+    display: "flex",
     renderCell: (params) => (
       <Box
         sx={{
@@ -77,6 +78,8 @@ const columns: GridColDef[] = [
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          marginBlock: "auto",
+          width: "100%",
         }}
       >
         {params.value}
@@ -90,22 +93,11 @@ export default function ThreatsList() {
 
   return (
     <Box mt={4}>
-      <Typography
-        variant="h6"
-        fontWeight={700}
-        sx={{ color: "text.primary", mb: 2 }}
-      >
+      <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
         Amenazas recientes
       </Typography>
 
-      <Paper
-        elevation={2}
-        sx={{
-          p: 2,
-          backgroundColor: theme.palette.background.paper,
-          borderRadius: 2,
-        }}
-      >
+      <Paper elevation={2} sx={{ p: 2, borderRadius: 2 }}>
         <div style={{ height: 300, width: "100%" }}>
           <DataGrid
             rows={threatData}

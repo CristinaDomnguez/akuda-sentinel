@@ -1,4 +1,4 @@
-import { Box, Typography, Paper } from "@mui/material";
+import { Typography, Paper, Stack } from "@mui/material";
 
 /**
  * Lista de eventos simulados del sistema (tipo consola técnica).
@@ -20,12 +20,8 @@ const logs = [
 
 export default function LogsConsole() {
   return (
-    <Box mt={4}>
-      <Typography
-        variant="h6"
-        fontWeight={700}
-        sx={{ color: "text.primary", mb: 1 }}
-      >
+    <Stack spacing={2} mt={4}>
+      <Typography variant="h6" fontWeight={700}>
         Consola del sistema
       </Typography>
       <Paper
@@ -45,6 +41,6 @@ export default function LogsConsole() {
           </Typography>
         ))}
       </Paper>
-    </Box>
+    </Stack>
   );
 }

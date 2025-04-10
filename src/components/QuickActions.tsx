@@ -1,26 +1,28 @@
 import { Box, Button, Stack, Typography, Snackbar } from "@mui/material";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 /**
  * Componente con botones de acciones rápidas del antivirus.
  */
 export default function QuickActions() {
   const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
+  const timeoutRef = useRef<number | null>(null);
 
   const handleAction = (action: string) => {
     setSnackbarMessage(`Acción iniciada: ${action}`);
-    setTimeout(() => {
+    if (timeoutRef.current !== null) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = setTimeout(() => {
       setSnackbarMessage(null);
-    }, 3000);
+      timeoutRef.current = null;
+    }, 3000) as unknown as number;
   };
 
   return (
     <Box mt={4}>
-      <Typography
-        variant="h6"
-        fontWeight={700}
-        sx={{ color: "text.primary", mb: 1 }}
-      >
+      <Typography variant="h6" fontWeight={700} sx={{ mb: 1 }}>
         Acciones rápidas
       </Typography>
 

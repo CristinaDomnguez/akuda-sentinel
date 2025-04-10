@@ -1,5 +1,5 @@
-import { Card, CardContent, Typography, Button } from '@mui/material';
-import { ReactNode } from 'react';
+import { Card, CardContent, Typography, Button } from "@mui/material";
+import { ReactNode } from "react";
 
 type StatusCardProps = {
   title: string;
@@ -13,14 +13,14 @@ type StatusCardProps = {
 /**
  * Componente de tarjeta reutilizable para mostrar el estado de un módulo del antivirus.
  */
-const StatusCard = ({
+export default function StatusCard({
   title,
   value,
   onAction,
   actionLabel,
   icon,
-  color = 'default',
-}: StatusCardProps) => {
+  color = "default",
+}: StatusCardProps) {
   return (
     <Card sx={{ minWidth: 250, borderLeft: `6px solid ${color}`, m: 1 }}>
       <CardContent>
@@ -37,6 +37,4 @@ const StatusCard = ({
       </CardContent>
     </Card>
   );
-};
-
-export default StatusCard;
+}

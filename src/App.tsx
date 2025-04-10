@@ -4,7 +4,7 @@ import { ThemeProvider, CssBaseline } from "@mui/material";
 import { getTheme } from "./theme";
 import { useThemeStore } from "./store/themeStore";
 
-function App() {
+export default function App() {
   const mode = useThemeStore((state) => state.mode);
   const theme = getTheme(mode);
 
@@ -15,5 +15,3 @@ function App() {
     </ThemeProvider>
   );
 }
-
-export default App;

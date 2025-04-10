@@ -6,7 +6,6 @@ export const getTheme = (mode: "light" | "dark") =>
       mode,
       ...(mode === "light"
         ? {
-            //Tema claro
             primary: { main: "#1976d2" },
             secondary: { main: "#9c27b0" },
             background: {
@@ -20,7 +19,6 @@ export const getTheme = (mode: "light" | "dark") =>
             divider: "#e0e0e0",
           }
         : {
-            //Tema oscuro estilo VS Code
             primary: { main: "#90caf9" },
             secondary: { main: "#ce93d8" },
             background: {
