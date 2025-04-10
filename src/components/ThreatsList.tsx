@@ -1,9 +1,6 @@
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Paper, useTheme } from "@mui/material";
 
-/**
- * Datos simulados de amenazas detectadas recientemente.
- */
 const threatData = [
   {
     id: 1,
@@ -35,9 +32,6 @@ const threatData = [
   },
 ];
 
-/**
- * Columnas de la tabla.
- */
 const columns: GridColDef[] = [
   { field: "type", headerName: "Tipo de amenaza", flex: 1 },
   { field: "date", headerName: "Fecha", flex: 1 },
@@ -50,11 +44,11 @@ const columns: GridColDef[] = [
         style={{
           color:
             params.value === "Crítica"
-              ? "#d32f2f"
+              ? "#f44336"
               : params.value === "Alta"
-              ? "#f57c00"
+              ? "#fb8c00"
               : "#1976d2",
-          fontWeight: "bold",
+          fontWeight: 600,
         }}
       >
         {params.value}
@@ -66,8 +60,8 @@ const columns: GridColDef[] = [
     headerName: "Estado",
     flex: 1,
     renderCell: (params) => (
-      <span
-        style={{
+      <Box
+        sx={{
           backgroundColor:
             params.value === "Bloqueado"
               ? "#e53935"
@@ -75,40 +69,70 @@ const columns: GridColDef[] = [
               ? "#ffb300"
               : "#64b5f6",
           color: "#fff",
-          padding: "4px 8px",
-          borderRadius: 4,
+          px: 1,
+          height: 24,
+          borderRadius: "999px",
           fontWeight: 500,
-          fontSize: "0.85rem",
+          fontSize: "0.75rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         {params.value}
-      </span>
+      </Box>
     ),
   },
 ];
 
-/**
- * Tabla con amenazas recientes. Usa MUI DataGrid.
- */
 export default function ThreatsList() {
+  const theme = useTheme();
+
   return (
     <Box mt={4}>
       <Typography
         variant="h6"
         fontWeight={700}
-        sx={{ color: "text.primary", mb: 1 }}
+        sx={{ color: "text.primary", mb: 2 }}
       >
         Amenazas recientes
       </Typography>
 
-      <div style={{ height: 300, width: "100%" }}>
-        <DataGrid
-          rows={threatData}
-          columns={columns}
-          pageSizeOptions={[5]}
-          disableRowSelectionOnClick
-        />
-      </div>
+      <Paper
+        elevation={2}
+        sx={{
+          p: 2,
+          backgroundColor: theme.palette.background.paper,
+          borderRadius: 2,
+        }}
+      >
+        <div style={{ height: 300, width: "100%" }}>
+          <DataGrid
+            rows={threatData}
+            columns={columns}
+            pageSizeOptions={[5]}
+            disableRowSelectionOnClick
+            sx={{
+              border: "none",
+              rowHeight: 48,
+              headerHeight: 50,
+              ".MuiDataGrid-columnHeaders": {
+                backgroundColor:
+                  theme.palette.mode === "dark" ? "#2a2a2a" : "#f0f0f0",
+                color: theme.palette.text.primary,
+                fontWeight: 600,
+              },
+              ".MuiDataGrid-row:nth-of-type(even)": {
+                backgroundColor:
+                  theme.palette.mode === "dark" ? "#1e1e1e" : "#fafafa",
+              },
+              ".MuiDataGrid-cell": {
+                color: theme.palette.text.primary,
+              },
+            }}
+          />
+        </div>
+      </Paper>
     </Box>
   );
 }

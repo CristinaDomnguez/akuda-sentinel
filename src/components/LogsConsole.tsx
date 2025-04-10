@@ -11,6 +11,11 @@ const logs = [
   "[12:08] Protección en tiempo real: ACTIVADA.",
   "[12:09] Base de datos de virus actualizada.",
   "[12:10] Escaneo programado en 7 días.",
+  "[12:11] Comprobación de integridad completada.",
+  "[12:12] No se detectaron cambios sospechosos.",
+  "[12:13] Monitor de red iniciado.",
+  "[12:14] Revisión de puertos: OK.",
+  "[12:15] Limpieza de caché completada.",
 ];
 
 export default function LogsConsole() {
@@ -30,7 +35,7 @@ export default function LogsConsole() {
           color: "#90ee90",
           fontFamily: "monospace",
           padding: 2,
-          maxHeight: 200,
+          maxHeight: 350,
           overflowY: "auto",
         }}
       >

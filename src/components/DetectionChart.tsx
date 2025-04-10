@@ -12,10 +12,17 @@ const data = [
 const DetectionChart = () => {
   const theme = useTheme();
 
-  const nivoTheme = {
-    textColor: theme.palette.text.primary,
+  const nivoTheme: Theme = {
+    text: {
+      color: theme.palette.text.primary,
+    },
     axis: {
       ticks: {
+        text: {
+          fill: theme.palette.text.primary,
+        },
+      },
+      legend: {
         text: {
           fill: theme.palette.text.primary,
         },
@@ -26,7 +33,7 @@ const DetectionChart = () => {
         stroke: theme.palette.divider,
       },
     },
-  } as Theme;
+  };
 
   return (
     <Paper

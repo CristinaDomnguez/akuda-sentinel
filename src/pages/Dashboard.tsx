@@ -6,6 +6,7 @@ import ThreatsList from "../components/ThreatsList";
 import LogsConsole from "../components/LogsConsole";
 import QuickActions from "../components/QuickActions";
 import SystemStatus from "../components/SystemStatus";
+import ThreatsPieChart from "../components/ThreatsPieChart";
 import { useAntivirusStore } from "../store/antivirusStore";
 
 const Dashboard = () => {
@@ -16,8 +17,7 @@ const Dashboard = () => {
     <>
       <Header />
 
-      <Container maxWidth="lg" sx={{ mt: 6, mb: 6 }}>
-        {/* Título y estado general */}
+      <Container maxWidth="xl" sx={{ mt: 6, mb: 6 }}>
         <Box
           display="flex"
           justifyContent="space-between"
@@ -30,60 +30,67 @@ const Dashboard = () => {
           <SystemStatus status={realTimeProtection ? "safe" : "warning"} />
         </Box>
 
-        {/* Tarjetas principales */}
-        <Box mb={7}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={6} md={4}>
-              <StatusCard
-                title="Escáner"
-                value={`Último escaneo: hace ${lastScanDaysAgo} días`}
-                onAction={scanNow}
-                actionLabel="Escanear ahora"
-                color="#1976d2"
-              />
-            </Grid>
+        <Grid container spacing={4}>
+          {/* Columna izquierda */}
+          <Grid item xs={12} md={8}>
+            <Grid container spacing={3}>
+              <Grid item xs={12} sm={6} md={4}>
+                <StatusCard
+                  title="Escáner"
+                  value={`Último escaneo: hace ${lastScanDaysAgo} días`}
+                  onAction={scanNow}
+                  actionLabel="Escanear ahora"
+                  color="#1976d2"
+                />
+              </Grid>
 
-            <Grid item xs={12} sm={6} md={4}>
-              <StatusCard
-                title="Protección en Tiempo Real"
-                value={realTimeProtection ? "Activa" : "Inactiva"}
-                onAction={toggleProtection}
-                actionLabel={realTimeProtection ? "Desactivar" : "Activar"}
-                color={realTimeProtection ? "#4caf50" : "#d32f2f"}
-              />
-            </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <StatusCard
+                  title="Protección en Tiempo Real"
+                  value={realTimeProtection ? "Activa" : "Inactiva"}
+                  onAction={toggleProtection}
+                  actionLabel={realTimeProtection ? "Desactivar" : "Activar"}
+                  color={realTimeProtection ? "#4caf50" : "#d32f2f"}
+                />
+              </Grid>
 
-            <Grid item xs={12} sm={6} md={4}>
-              <StatusCard
-                title="Actualización"
-                value="Última actualización: hace 2 días"
-                onAction={() => alert("Buscando actualizaciones...")}
-                actionLabel="Buscar ahora"
-                color="#ff9800"
-              />
+              <Grid item xs={12} sm={6} md={4}>
+                <StatusCard
+                  title="Actualización"
+                  value="Última actualización: hace 2 días"
+                  onAction={() => alert("Buscando actualizaciones...")}
+                  actionLabel="Buscar ahora"
+                  color="#ff9800"
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <DetectionChart />
+              </Grid>
+
+              <Grid item xs={12}>
+                <ThreatsList />
+              </Grid>
             </Grid>
           </Grid>
-        </Box>
 
-        {/* Gráfico de detecciones */}
-        <Box mb={9}>
-          <DetectionChart />
-        </Box>
+          {/* Columna derecha */}
+          <Grid item xs={12} md={4}>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <ThreatsPieChart />
+              </Grid>
 
-        {/* Acciones rápidas */}
-        <Box mb={9}>
-          <QuickActions />
-        </Box>
+              <Grid item xs={12}>
+                <QuickActions />
+              </Grid>
 
-        {/* Amenazas recientes */}
-        <Box mb={7}>
-          <ThreatsList />
-        </Box>
-
-        {/* Consola del sistema */}
-        <Box mb={7}>
-          <LogsConsole />
-        </Box>
+              <Grid item xs={12}>
+                <LogsConsole />
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
       </Container>
     </>
   );
