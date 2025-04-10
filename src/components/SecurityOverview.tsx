@@ -1,5 +1,11 @@
-import { Card, CardContent, Typography, Button, Grid, Box } from '@mui/material';
-import { Security, History, Shield } from '@mui/icons-material';
+import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  Grid,
+  Box,
+} from "@mui/material";
 
 const SecurityOverview = () => {
   return (
@@ -15,8 +21,12 @@ const SecurityOverview = () => {
               <Typography variant="h6" gutterBottom>
                 Scanner
               </Typography>
-              <Typography variant="body2">Último escaneo: hace 14 días</Typography>
-              <Button variant="outlined" sx={{ mt: 2 }}>Escanear</Button>
+              <Typography variant="body2">
+                Último escaneo: hace 14 días
+              </Typography>
+              <Button variant="outlined" sx={{ mt: 2 }}>
+                Escanear
+              </Button>
             </CardContent>
           </Card>
         </Grid>
@@ -28,7 +38,9 @@ const SecurityOverview = () => {
                 Historial de Detecciones
               </Typography>
               <Typography variant="body2">Resumen global</Typography>
-              <Button variant="outlined" sx={{ mt: 2 }}>Ver historial</Button>
+              <Button variant="outlined" sx={{ mt: 2 }}>
+                Ver historial
+              </Button>
             </CardContent>
           </Card>
         </Grid>
@@ -40,7 +52,9 @@ const SecurityOverview = () => {
                 Protección en Tiempo Real
               </Typography>
               <Typography color="error">Inactiva</Typography>
-              <Button variant="contained" color="warning" sx={{ mt: 2 }}>Actualizar</Button>
+              <Button variant="contained" color="warning" sx={{ mt: 2 }}>
+                Actualizar
+              </Button>
             </CardContent>
           </Card>
         </Grid>

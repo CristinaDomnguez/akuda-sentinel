@@ -1,10 +1,19 @@
-import Dashboard from './pages/Dashboard';
+import Dashboard from "./pages/Dashboard";
 
-/**
- * Punto de entrada principal de la aplicación.
- */
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { getTheme } from "./theme";
+import { useThemeStore } from "./store/themeStore";
+
 function App() {
-  return <Dashboard />;
+  const mode = useThemeStore((state) => state.mode);
+  const theme = getTheme(mode);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Dashboard />;
+    </ThemeProvider>
+  );
 }
 
 export default App;
