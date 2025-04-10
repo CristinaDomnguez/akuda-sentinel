@@ -1,54 +1,40 @@
-# React + TypeScript + Vite
+# Akuda Sentinel - Dashboard de Antivirus
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es un proyecto técnico de frontend desarrollado como parte de una prueba para una posición de trabajo. Se trata de una interfaz de antivirus que simula un panel de control con visualizaciones modernas, componentes interactivos y un enfoque centrado en la experiencia de usuario.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologías utilizadas
 
-## Expanding the ESLint configuration
+- **React** + **Vite**
+- **TypeScript**
+- **Material UI (MUI)** para la interfaz
+- **Zustand** para el manejo de estado global
+- **@nivo/bar** y **@nivo/pie** para gráficos interactivos
+- **ESLint**, **Vitest** y **Date-fns** para herramientas adicionales
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+## Descripción visual
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+La aplicación cuenta con un diseño responsive y moderno, dividido en dos columnas. Incluye:
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+- Tarjetas de estado con acciones rápidas
+- Gráfica de detecciones globales por tipo de amenaza
+- Tabla con amenazas recientes y sus detalles
+- Consola de sistema con logs simulados
+- Gráfico circular de distribución de amenazas
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    "react-x": reactX,
-    "react-dom": reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs["recommended-typescript"].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
-```
+Todo el diseño se adapta automáticamente entre **modo claro y modo oscuro**, con un interruptor en el encabezado.
+
+---
+
+## Funcionalidad incluida
+
+- **Simulación de escaneos y protección en tiempo real**
+- **Modo oscuro dinámico**
+- **Vista estructurada en dos columnas para facilitar la navegación**
+- **Etiquetas visuales para representar el estado de amenazas**
+- **Gráficos adaptados al tema (dark/light)**
+- **Componente de consola técnica con estilo terminal**
+
